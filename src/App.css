@@ -1,11 +1,24 @@
+.cursor-pointer {
+  cursor: pointer;
+}
 .canvas-container .main-canvas {
   pointer-events: none;
 }
-
-.canvas-container:hover .main-canvas {
+.app.with-photo:not(.mobile) .canvas-container:hover .main-canvas,
+.app.mobile.editing .main-canvas {
   opacity: 0.5;
 }
-
-.canvas-container:not(:hover) .photo-controller {
+.app:not(.mobile) .canvas-container:not(:hover) .photo-controller,
+.app.mobile:not(.editing) .photo-controller {
   display: none;
+}
+.canvas-container .image-selector {
+  z-index: 3;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
