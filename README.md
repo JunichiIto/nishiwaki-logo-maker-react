@@ -7,3 +7,4 @@
 
 ## firebase hostingにdeploy
 - `yarn deploy`
+  - https://nishiwaki-logo-maker-react.firebaseapp.com/ にhostingされる
