@@ -211,10 +211,10 @@ class App extends Component {
             )
           }
           <div className="text-center">
-            <h3 class="description">西脇市のロゴを使って、あなただけのアイコン画像を作成します。</h3>
-            <div class="movie-help">
+            <h3 className="description">西脇市のロゴを使って、あなただけのアイコン画像を作成します。</h3>
+            <div className="movie-help">
               <a href="https://youtu.be/R8PkcZtWeks" target="_blank">
-                <i class="fab fa-youtube" aria-hidden="true"></i>&nbsp;動画で使い方を見る
+                <i className="fab fa-youtube" aria-hidden="true"></i>&nbsp;動画で使い方を見る
               </a>
             </div>
             <div className="canvas-container" style={{ width: 325, height: 325, position: 'relative', margin: 'auto' }}>
@@ -241,11 +241,12 @@ class App extends Component {
             </div>
           </div>
           <div className="form-group">
-            <Input value={name} onChange={this.onChangeText.bind(this, 'name')} className="form-control"/>
+            <label htmlFor="input-name">おなまえ</label>
+            <Input value={name} onChange={this.onChangeText.bind(this, 'name')} className="form-control" id="input-name"/>
           </div>
           <div>
-            <Button block color="primary" onClick={this.download}>
-              画像をダウンロード
+            <Button size="lg" block color="primary" onClick={this.download}>
+              <i className="fas fa-download" aria-hidden="true"></i>&nbsp;画像をダウンロード！
             </Button>
           </div>
         </div>

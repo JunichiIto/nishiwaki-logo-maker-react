@@ -45,3 +45,18 @@
 .movie-help a .fa-youtube {
     color: #ff1d1d;
 }
+label {
+  font-size: 12px;
+  margin: 0;
+  color: #666;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #e1147f;
+  border-color: #e1147f;
+  font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #cc1273;
+    border-color: #cc1273;
+}
