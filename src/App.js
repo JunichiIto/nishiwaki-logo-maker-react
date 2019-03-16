@@ -194,7 +194,7 @@ class App extends Component {
       <div className={classnames('app', { 'with-photo': !!photo, mobile: isMobile, editing: mode === 'editing' })}>
         <div>
           <Navbar color="navbar" light expand="md">
-            <NavbarBrand href="/">ニシワキ ロゴメーカー</NavbarBrand>
+            <NavbarBrand>ニシワキ ロゴメーカー</NavbarBrand>
           </Navbar>
         </div>
         <div style={{ width: 375, margin: 'auto' }}>

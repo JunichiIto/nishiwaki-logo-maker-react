@@ -23,6 +23,9 @@
   left: 0;
 }
 
+a.navbar-brand:not([href]):not([tabindex]) {
+  color: #ffffff;
+}
 .bg-navbar {
   background-color: #23ac0e;
 }
