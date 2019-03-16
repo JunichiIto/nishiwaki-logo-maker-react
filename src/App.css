@@ -23,15 +23,24 @@
   left: 0;
 }
 
-a.navbar-brand:not([href]):not([tabindex]) {
-  color: #ffffff;
-}
 .bg-navbar {
   background-color: #23ac0e;
 }
 .navbar-light .navbar-brand {
   font-weight: bold;
   color: #ffffff;
+}
+.navbar-expand-md {
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+a.navbar-brand:not([href]):not([tabindex]) {
+  color: #ffffff;
+  font-size: 18pt;
+}
+.logo-wrapper {
+  display: inline-block;
+  margin-right: 5px;
 }
 .description {
   font-size: 1em;
