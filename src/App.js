@@ -194,7 +194,7 @@ class App extends Component {
       <div className={classnames('app', { 'with-photo': !!photo, mobile: isMobile, editing: mode === 'editing' })}>
         <div>
           <Navbar color="navbar" light expand="md">
-            <NavbarBrand href="/">ニシワキロゴメーカー</NavbarBrand>
+            <NavbarBrand href="/">ニシワキ ロゴメーカー</NavbarBrand>
           </Navbar>
         </div>
         <div style={{ width: 375, margin: 'auto' }}>
@@ -250,12 +250,12 @@ class App extends Component {
             </Button>
           </div>
           <div className="text-center">
-            <div class="inquiry">
+            <div className="inquiry">
               お問合せ先：<a href="https://www.city.nishiwaki.lg.jp/form/inquiryPC/Init.do?inquiryId=2&amp;ref=www.city.nishiwaki.lg.jp%2Fkakukanogoannai%2Ftoshikeieibu%2Fjisedaisouseika%2Findex.html" target="_blank">西脇市役所次世代創生課</a>
             </div>
-            <div class="source-code">
+            <div className="source-code">
               <a href="https://github.com/JunichiIto/nishiwaki-logo-maker" target="_blank">
-                <i class="fab fa-github" aria-hidden="true"></i>&nbsp;JunichiIto/nishiwaki-logo-maker
+                <i className="fab fa-github" aria-hidden="true"></i>&nbsp;JunichiIto/nishiwaki-logo-maker
               </a>
             </div>
           </div>
