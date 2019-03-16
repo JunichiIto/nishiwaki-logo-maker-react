@@ -76,6 +76,19 @@ label {
 .btn-lg {
   font-size: 1.15rem;
 }
+.btn-outline-primary {
+  border-color: #e1147f;
+}
+.btn-outline-primary:hover {
+  background-color: #e1147f;
+  border-color: #e1147f;
+}
+.btn-outline-primary label {
+  color: #e1147f;
+}
+.btn-outline-primary:hover label {
+  color: #ffffff;
+}
 .inquiry {
   margin-top: 1.5em;
   font-size: 12px;
