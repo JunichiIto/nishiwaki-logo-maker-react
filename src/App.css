@@ -60,3 +60,17 @@ label {
     background-color: #cc1273;
     border-color: #cc1273;
 }
+.btn-lg {
+  font-size: 1.15rem;
+}
+.inquiry {
+  margin-top: 1.5em;
+  font-size: 12px;
+}
+.source-code {
+  margin: 10px;
+}
+.source-code a {
+  font-size: 10px;
+  color: #666;
+}

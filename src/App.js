@@ -249,6 +249,16 @@ class App extends Component {
               <i className="fas fa-download" aria-hidden="true"></i>&nbsp;画像をダウンロード！
             </Button>
           </div>
+          <div className="text-center">
+            <div class="inquiry">
+              お問合せ先：<a href="https://www.city.nishiwaki.lg.jp/form/inquiryPC/Init.do?inquiryId=2&amp;ref=www.city.nishiwaki.lg.jp%2Fkakukanogoannai%2Ftoshikeieibu%2Fjisedaisouseika%2Findex.html" target="_blank">西脇市役所次世代創生課</a>
+            </div>
+            <div class="source-code">
+              <a href="https://github.com/JunichiIto/nishiwaki-logo-maker" target="_blank">
+                <i class="fab fa-github" aria-hidden="true"></i>&nbsp;JunichiIto/nishiwaki-logo-maker
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     );
