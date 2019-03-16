@@ -6,6 +6,7 @@ import platform from 'platform';
 import canvasToImage from 'canvas-to-image';
 import 'react-resizable/css/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import classnames from 'classnames';
 
 import logo from './logo.png';
@@ -213,7 +214,7 @@ class App extends Component {
             <h3 class="description">西脇市のロゴを使って、あなただけのアイコン画像を作成します。</h3>
             <div class="movie-help">
               <a href="https://youtu.be/R8PkcZtWeks" target="_blank">
-                <i class="fa fa-youtube-play" aria-hidden="true"></i>&nbsp;動画で使い方を見る
+                <i class="fab fa-youtube" aria-hidden="true"></i>&nbsp;動画で使い方を見る
               </a>
             </div>
             <div className="canvas-container" style={{ width: 325, height: 325, position: 'relative', margin: 'auto' }}>
