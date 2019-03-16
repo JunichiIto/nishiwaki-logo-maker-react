@@ -22,3 +22,23 @@
   bottom: 0;
   left: 0;
 }
+
+.bg-navbar {
+  background-color: #23ac0e;
+}
+.navbar-light .navbar-brand {
+  font-weight: bold;
+  color: #ffffff;
+}
+.description {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 25px 0 10px;
+}
+.movie-help {
+  margin-bottom: 15px;
+}
+.movie-help a {
+  font-size: 12px;
+  color: #666;
+}

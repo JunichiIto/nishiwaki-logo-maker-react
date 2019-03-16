@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
 import { Resizable } from 'react-resizable';
-import { Input, Button } from 'reactstrap';
+import { Input, Button, Navbar, NavbarBrand } from 'reactstrap';
 import platform from 'platform';
 import canvasToImage from 'canvas-to-image';
 import 'react-resizable/css/styles.css';
@@ -191,6 +191,11 @@ class App extends Component {
     const isMobile = ['Android', 'iOS', 'Windows Phone'].includes(platform.os.family);
     return (
       <div className={classnames('app', { 'with-photo': !!photo, mobile: isMobile, editing: mode === 'editing' })}>
+        <div>
+          <Navbar color="navbar" light expand="md">
+            <NavbarBrand href="/">ニシワキロゴメーカー</NavbarBrand>
+          </Navbar>
+        </div>
         <div style={{ width: 375, margin: 'auto' }}>
           {
             isMobile && photo && (
@@ -205,6 +210,12 @@ class App extends Component {
             )
           }
           <div className="text-center">
+            <h3 class="description">西脇市のロゴを使って、あなただけのアイコン画像を作成します。</h3>
+            <div class="movie-help">
+              <a href="https://youtu.be/R8PkcZtWeks" target="_blank">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>&nbsp;動画で使い方を見る
+              </a>
+            </div>
             <div className="canvas-container" style={{ width: 325, height: 325, position: 'relative', margin: 'auto' }}>
               <Draggable onDrag={this.onDrag}>
                 <Resizable width={width} height={height} onResize={this.onResize} lockAspectRatio style={{ position: 'absolute', zIndex: 1 }} className="photo-controller">
