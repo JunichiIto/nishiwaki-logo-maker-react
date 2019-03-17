@@ -12,6 +12,9 @@
 .app.mobile:not(.editing) .photo-controller {
   display: none;
 }
+.app:not(.with-photo) .react-resizable-handle {
+  display: none;
+}
 .canvas-container .image-selector {
   z-index: 3;
   position: absolute;
