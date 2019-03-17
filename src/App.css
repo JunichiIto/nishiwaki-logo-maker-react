@@ -69,10 +69,11 @@ label {
   border-color: #e1147f;
   font-weight: bold;
 }
-.btn-primary:hover {
-    background-color: #cc1273;
-    border-color: #cc1273;
+.btn-primary:hover, .btn-outline-primary:not(:disabled):not(.disabled):active {
+  background-color: #cc1273;
+  border-color: #cc1273;
 }
+
 .btn-lg {
   font-size: 1.15rem;
 }
@@ -99,6 +100,10 @@ label {
 .source-code a {
   font-size: 10px;
   color: #666;
+}
+
+.crop-icon.editing {
+  color: #e1147f!important;
 }
 
 .btn-help-modal {

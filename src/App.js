@@ -232,7 +232,7 @@ class App extends Component {
                         <div className="modal-body">
                           <ul>
                             <li>
-                               <i className="fas fa-edit" aria-hidden="true"></i>
+                               <i className="fas fa-crop-alt" aria-hidden="true"></i>
                                をタップで画像編集モード開始
                             </li>
                             <li>
@@ -247,7 +247,7 @@ class App extends Component {
                               </ul>
                             </li>
                             <li>
-                              <i className="fas fa-check" aria-hidden="true"></i>
+                              <i className="fas fa-crop-alt crop-icon editing" aria-hidden="true"></i>
                               をタップで画像編集モード終了
                             </li>
                             <li>他のアプリ内（LINE等）で開いた場合は、SafariやChromeなどのブラウザで開き直してください。</li>
@@ -268,10 +268,10 @@ class App extends Component {
                 <div className="d-flex text-primary justify-content-end">
                   {
                     mode === 'editing' && (
-                      <span className="fas fa-redo mr-1 cursor-pointer" onClick={this.rotate} />
+                      <span className="fas fa-redo mr-2 cursor-pointer" onClick={this.rotate} />
                     )
                   }
-                  <span className={classnames('fas cursor-pointer', ({ initial: 'fa-edit', editing: 'fa-check' })[mode])} onClick={this.toggleMode} />
+                  <span className={classnames('fas fa-crop-alt crop-icon cursor-pointer', [mode])}  onClick={this.toggleMode} />
                 </div>
               </div>
             )
