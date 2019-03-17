@@ -79,16 +79,17 @@ class App extends Component {
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext('2d');
-    ctx.translate(...
+    const params =
       (()=> {
         switch (index) {
           case 0: return [0, 0]
           case 1: return [w, 0]
           case 2: return [w, h]
           case 3: return [0, h]
+          default: console.log('Wrong index: ' + index)
         }
       })()
-    );
+    ctx.translate(...params);
     ctx.rotate(Math.PI * (90 * index) / 180);
     ctx.drawImage(photo, 0, 0, photo.width, photo.height);
     const url = canvas.toDataURL();
@@ -194,7 +195,7 @@ class App extends Component {
       <div className={classnames('app', { 'with-photo': !!photo, mobile: isMobile, editing: mode === 'editing' })}>
         <div>
           <Navbar color="navbar" light expand="md">
-            <div className="logo-wrapper"><img src="/logo.png" height="35" width="35" /></div> 
+            <div className="logo-wrapper"><img src="/logo.png" height="35" width="35" alt="西脇市ロゴ" /></div> 
             <NavbarBrand>
               ニシワキ ロゴメーカー
             </NavbarBrand>
@@ -216,7 +217,7 @@ class App extends Component {
           <div className="text-center">
             <h3 className="description">西脇市のロゴを使って、あなただけのアイコン画像を作成します。</h3>
             <div className="movie-help">
-              <a href="https://youtu.be/R8PkcZtWeks" target="_blank">
+              <a href="https://youtu.be/R8PkcZtWeks" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-youtube" aria-hidden="true"></i>&nbsp;動画で使い方を見る
               </a>
             </div>
@@ -254,10 +255,10 @@ class App extends Component {
           </div>
           <div className="text-center">
             <div className="inquiry">
-              お問合せ先：<a href="https://www.city.nishiwaki.lg.jp/form/inquiryPC/Init.do?inquiryId=2&amp;ref=www.city.nishiwaki.lg.jp%2Fkakukanogoannai%2Ftoshikeieibu%2Fjisedaisouseika%2Findex.html" target="_blank">西脇市役所次世代創生課</a>
+              お問合せ先：<a href="https://www.city.nishiwaki.lg.jp/form/inquiryPC/Init.do?inquiryId=2&amp;ref=www.city.nishiwaki.lg.jp%2Fkakukanogoannai%2Ftoshikeieibu%2Fjisedaisouseika%2Findex.html" target="_blank" rel="noopener noreferrer">西脇市役所次世代創生課</a>
             </div>
             <div className="source-code">
-              <a href="https://github.com/JunichiIto/nishiwaki-logo-maker" target="_blank">
+              <a href="https://github.com/JunichiIto/nishiwaki-logo-maker" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-github" aria-hidden="true"></i>&nbsp;JunichiIto/nishiwaki-logo-maker
               </a>
             </div>

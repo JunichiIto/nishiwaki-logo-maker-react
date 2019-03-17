@@ -4,7 +4,6 @@ export default function drawTrapezoid(ctx, img, factor) {
   var h = img.height
   var x = 0
   var startPoint = h * 0.5 * (factor*0.01)
-  var startLine = 0
   for(; x < w; x++) {
     // get x position based on line (y)
     var yi = (1 - x / w) * startPoint
