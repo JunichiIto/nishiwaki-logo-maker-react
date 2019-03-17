@@ -202,6 +202,14 @@ class App extends Component {
           </Navbar>
         </div>
         <div style={{ width: 375, margin: 'auto' }}>
+          <div className="text-center">
+            <h3 className="description">西脇市のロゴを使って、あなただけのアイコン画像を作成します。</h3>
+            <div className="movie-help">
+              <a href="https://youtu.be/R8PkcZtWeks" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-youtube" aria-hidden="true"></i>&nbsp;動画で使い方を見る
+              </a>
+            </div>
+          </div>
           {
             isMobile && photo && (
               <div className="d-flex text-primary justify-content-end">
@@ -215,12 +223,6 @@ class App extends Component {
             )
           }
           <div className="text-center">
-            <h3 className="description">西脇市のロゴを使って、あなただけのアイコン画像を作成します。</h3>
-            <div className="movie-help">
-              <a href="https://youtu.be/R8PkcZtWeks" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-youtube" aria-hidden="true"></i>&nbsp;動画で使い方を見る
-              </a>
-            </div>
             <div className="canvas-container" style={{ width: 325, height: 325, position: 'relative', margin: 'auto' }}>
               <Draggable onDrag={this.onDrag}>
                 <Resizable width={width} height={height} onResize={this.onResize} lockAspectRatio style={{ position: 'absolute', zIndex: 1 }} className="photo-controller">
