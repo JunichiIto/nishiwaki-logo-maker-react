@@ -100,3 +100,28 @@ label {
   font-size: 10px;
   color: #666;
 }
+
+.btn-help-modal {
+  color: #666;
+  font-size: 12px;
+}
+.modal-help .modal-title {
+  font-size: 1rem;
+}
+.modal-help .modal-body {
+  text-align: left;
+  font-size: 12px;
+}
+.modal-help .modal-body ul {
+  margin-top: 5px;
+  padding-left: 20px;
+}
+.modal-help .modal-body li {
+  margin-bottom: 5px;
+}
+.modal-help .modal-body .fas {
+  color: #007bff
+}
+.modal-help .modal-footer .btn {
+  font-size: 0.8rem;
+}

@@ -4,6 +4,7 @@ import { Resizable } from 'react-resizable';
 import { Input, Button, Navbar, NavbarBrand } from 'reactstrap';
 import platform from 'platform';
 import canvasToImage from 'canvas-to-image';
+import 'bootstrap';
 import 'react-resizable/css/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -209,6 +210,55 @@ class App extends Component {
                 <i className="fab fa-youtube" aria-hidden="true"></i>&nbsp;動画で使い方を見る
               </a>
             </div>
+
+            <Button color="link" className="btn-help-modal" data-toggle="modal" data-target="#helpModal">
+              <i className="fas fa-question-circle"></i>
+              操作方法
+            </Button>
+            <div className="modal fade modal-help" id="helpModal" tabIndex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
+              <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="helpModalLabel">操作方法と注意事項</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    <ul>
+                      <li>
+                         <i className="fas fa-edit" aria-hidden="true"></i>
+                         をタップで画像編集モード開始
+                      </li>
+                      <li>
+                        画像編集モードでは以下のことができます
+                        <ul>
+                           <li>画像の中心付近をドラッグで位置調整</li>
+                           <li>画像の右下をドラッグで拡大縮小</li>
+                           <li>
+                              <i className="fas fa-redo" aria-hidden="true"></i>
+                              をタップで90度右回転
+                           </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <i className="fas fa-check" aria-hidden="true"></i>
+                        をタップで画像編集モード終了
+                      </li>
+                      <li>他のアプリ内（LINE等）で開いた場合は、SafariやChromeなどのブラウザで開き直してください。</li>
+                      <li>
+                        Androidは
+                        <a href="https://play.google.com/store/apps/details?id=com.android.chrome&amp;hl=ja" target="_blank" rel="noopener noreferrer">Chromeブラウザ</a>
+                        の利用を推奨します。</li>
+                    </ul>
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
           {
             isMobile && photo && (
