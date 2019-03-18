@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
 import { Resizable } from 'react-resizable';
-import { Input, Button } from 'reactstrap';
+import { Input, Button, Navbar, NavbarBrand } from 'reactstrap';
 import platform from 'platform';
 import canvasToImage from 'canvas-to-image';
+import 'bootstrap';
 import 'react-resizable/css/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import classnames from 'classnames';
 
 import logo from './logo.png';
@@ -78,16 +80,17 @@ class App extends Component {
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext('2d');
-    ctx.translate(...
+    const params =
       (()=> {
         switch (index) {
           case 0: return [0, 0]
           case 1: return [w, 0]
           case 2: return [w, h]
           case 3: return [0, h]
+          default: console.log('Wrong index: ' + index)
         }
       })()
-    );
+    ctx.translate(...params);
     ctx.rotate(Math.PI * (90 * index) / 180);
     ctx.drawImage(photo, 0, 0, photo.width, photo.height);
     const url = canvas.toDataURL();
@@ -191,16 +194,85 @@ class App extends Component {
     const isMobile = ['Android', 'iOS', 'Windows Phone'].includes(platform.os.family);
     return (
       <div className={classnames('app', { 'with-photo': !!photo, mobile: isMobile, editing: mode === 'editing' })}>
+        <div>
+          <Navbar color="navbar" light expand="md">
+            <div className="logo-wrapper"><img src="/logo.png" height="35" width="35" alt="西脇市ロゴ" /></div> 
+            <NavbarBrand>
+              ニシワキ ロゴメーカー
+            </NavbarBrand>
+          </Navbar>
+        </div>
         <div style={{ width: 375, margin: 'auto' }}>
+          <div className="text-center">
+            <h3 className="description">西脇市のロゴを使って、あなただけのアイコン画像を作成します。</h3>
+            <div className="movie-help">
+              <a href="https://youtu.be/R8PkcZtWeks" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-youtube" aria-hidden="true"></i>&nbsp;動画で使い方を見る
+              </a>
+            </div>
+
+          </div>
           {
             isMobile && photo && (
-              <div className="d-flex text-primary justify-content-end">
-                {
-                  mode === 'editing' && (
-                    <span className="fas fa-redo mr-1 cursor-pointer" onClick={this.rotate} />
-                  )
-                }
-                <span className={classnames('fas cursor-pointer', ({ initial: 'fa-edit', editing: 'fa-check' })[mode])} onClick={this.toggleMode} />
+              <div>
+                <div className="d-flex justify-content-end">
+                  <Button color="link" className="btn-help-modal" data-toggle="modal" data-target="#helpModal">
+                    <i className="fas fa-question-circle"></i>
+                    操作方法
+                  </Button>
+                  <div className="modal fade modal-help" id="helpModal" tabIndex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="helpModalLabel">操作方法と注意事項</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div className="modal-body">
+                          <ul>
+                            <li>
+                               <i className="fas fa-crop-alt" aria-hidden="true"></i>
+                               をタップで画像編集モード開始
+                            </li>
+                            <li>
+                              画像編集モードでは以下のことができます
+                              <ul>
+                                 <li>画像の中心付近をドラッグで位置調整</li>
+                                 <li>画像の右下をドラッグで拡大縮小</li>
+                                 <li>
+                                    <i className="fas fa-redo" aria-hidden="true"></i>
+                                    をタップで90度右回転
+                                 </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <i className="fas fa-crop-alt crop-icon editing" aria-hidden="true"></i>
+                              をタップで画像編集モード終了
+                            </li>
+                            <li>他のアプリ内（LINE等）で開いた場合は、SafariやChromeなどのブラウザで開き直してください。</li>
+                            <li>
+                              Androidは
+                              <a href="https://play.google.com/store/apps/details?id=com.android.chrome&amp;hl=ja" target="_blank" rel="noopener noreferrer">Chromeブラウザ</a>
+                              の利用を推奨します。</li>
+                          </ul>
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="d-flex text-primary justify-content-end">
+                  {
+                    mode === 'editing' && (
+                      <span className="fas fa-redo mr-2 cursor-pointer" onClick={this.rotate} />
+                    )
+                  }
+                  <span className={classnames('fas fa-crop-alt crop-icon cursor-pointer', [mode])}  onClick={this.toggleMode} />
+                </div>
               </div>
             )
           }
@@ -229,12 +301,23 @@ class App extends Component {
             </div>
           </div>
           <div className="form-group">
-            <Input value={name} onChange={this.onChangeText.bind(this, 'name')} className="form-control"/>
+            <label htmlFor="input-name">おなまえ</label>
+            <Input value={name} onChange={this.onChangeText.bind(this, 'name')} className="form-control" id="input-name"/>
           </div>
           <div>
-            <Button block color="primary" onClick={this.download}>
-              画像をダウンロード
+            <Button size="lg" block color="primary" onClick={this.download}>
+              <i className="fas fa-download" aria-hidden="true"></i>&nbsp;画像をダウンロード！
             </Button>
+          </div>
+          <div className="text-center">
+            <div className="inquiry">
+              お問合せ先：<a href="https://www.city.nishiwaki.lg.jp/form/inquiryPC/Init.do?inquiryId=2&amp;ref=www.city.nishiwaki.lg.jp%2Fkakukanogoannai%2Ftoshikeieibu%2Fjisedaisouseika%2Findex.html" target="_blank" rel="noopener noreferrer">西脇市役所次世代創生課</a>
+            </div>
+            <div className="source-code">
+              <a href="https://github.com/JunichiIto/nishiwaki-logo-maker" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-github" aria-hidden="true"></i>&nbsp;JunichiIto/nishiwaki-logo-maker
+              </a>
+            </div>
           </div>
         </div>
       </div>

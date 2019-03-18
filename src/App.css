@@ -12,6 +12,9 @@
 .app.mobile:not(.editing) .photo-controller {
   display: none;
 }
+.app:not(.with-photo) .react-resizable-handle {
+  display: none;
+}
 .canvas-container .image-selector {
   z-index: 3;
   position: absolute;
@@ -21,4 +24,113 @@
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.bg-navbar {
+  background-color: #23ac0e;
+}
+.navbar-light .navbar-brand {
+  font-weight: bold;
+  color: #ffffff;
+}
+.navbar-expand-md {
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+a.navbar-brand:not([href]):not([tabindex]) {
+  color: #ffffff;
+  font-size: 18pt;
+}
+.logo-wrapper {
+  display: inline-block;
+  margin-right: 5px;
+}
+.description {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 25px 0 10px;
+  line-height: 1.5em;
+}
+.movie-help {
+  margin-bottom: 15px;
+}
+.movie-help a {
+  font-size: 12px;
+  color: #666;
+}
+.movie-help a .fa-youtube {
+    color: #ff1d1d;
+}
+label {
+  font-size: 12px;
+  margin: 0;
+  color: #666;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #e1147f;
+  border-color: #e1147f;
+  font-weight: bold;
+}
+.btn-primary:hover, .btn-outline-primary:not(:disabled):not(.disabled):active {
+  background-color: #cc1273;
+  border-color: #cc1273;
+}
+
+.btn-lg {
+  font-size: 1.15rem;
+}
+.btn-outline-primary {
+  border-color: #e1147f;
+}
+.btn-outline-primary:hover {
+  background-color: #e1147f;
+  border-color: #e1147f;
+}
+.btn-outline-primary label {
+  color: #e1147f;
+}
+.btn-outline-primary:hover label {
+  color: #ffffff;
+}
+.inquiry {
+  margin-top: 1.5em;
+  font-size: 12px;
+}
+.source-code {
+  margin: 10px;
+}
+.source-code a {
+  font-size: 10px;
+  color: #666;
+}
+
+.crop-icon.editing {
+  color: #e1147f!important;
+}
+
+.btn-help-modal {
+  color: #666;
+  font-size: 12px;
+  padding: 0 0 10px 0;
+}
+.modal-help .modal-title {
+  font-size: 1rem;
+}
+.modal-help .modal-body {
+  text-align: left;
+  font-size: 12px;
+}
+.modal-help .modal-body ul {
+  margin-top: 5px;
+  padding-left: 20px;
+}
+.modal-help .modal-body li {
+  margin-bottom: 5px;
+}
+.modal-help .modal-body .fas {
+  color: #007bff
+}
+.modal-help .modal-footer .btn {
+  font-size: 0.8rem;
 }
