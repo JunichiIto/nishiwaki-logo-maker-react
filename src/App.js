@@ -17,6 +17,9 @@ import drawTrapezoid from './drawTrapezoid';
 
 const baseSize = 325;
 const { min, max } = Math;
+const elPath = (el) => {
+  return el.parentNode ? [el, ...elPath(el.parentNode)] : [el];
+}
 
 class App extends Component {
   constructor() {
@@ -29,6 +32,7 @@ class App extends Component {
   }
   componentDidMount() {
     this.loadLogo();
+    this.createNameImage();
   }
   async loadLogo() {
     this.setState({ logo: await readImage(logo) });
@@ -45,6 +49,9 @@ class App extends Component {
       this.drawCanvas();
     }
     if(prevState.name !== this.state.name) {
+      this.createNameImage();
+    }
+    if(prevState.nameImage !== this.state.nameImage) {
       this.drawCanvas();
     }
     if(prevState.photo !== this.state.photo || prevState.rotationIndex !== this.state.rotationIndex) {
@@ -56,7 +63,9 @@ class App extends Component {
       this.drawCanvas();
     }
   }
-  onSelectFile = async ({ target: { files: [file] } }) => {
+  // NOTE: files: [file] をするとIEで動かない。くそが
+  onSelectFile = async ({ target: { files = [] } }) => {
+    const [file] = Array.from(files);
     if (!file) return;
     const imageUrl = await readFile(file, 'readAsDataURL');
     const photo = await readImage(imageUrl);
@@ -138,7 +147,7 @@ class App extends Component {
     ctx.drawImage(logo, 0, 0, baseSize, baseSize);
   }
   onDrag = (event, { x, y }) => {
-    if(event.path.some(_ => _.className === 'react-resizable-handle')) return false;
+    if(elPath(event.target).some(_ => _.className === 'react-resizable-handle')) return false;
     this.setState({ x, y });
   }
   onResize = (_, { size: { width, height } }) => {
@@ -147,7 +156,7 @@ class App extends Component {
   onChangeText = (propName, { target: { value } }) => {
     this.setState({ [propName]: value });
   }
-  async drawTextImage() {
+  async createNameImage() {
     const { name } = this.state;
     const tempCanvas = document.createElement('canvas');
     const tempCanvasWidth = baseSize * 0.3;
@@ -159,16 +168,21 @@ class App extends Component {
     tempCanvasCtx.fillText(name, 0, tempCanvasHeight * 0.8, tempCanvasWidth);
     const url = tempCanvas.toDataURL();
     const image = await readImage(url);
+    this.setState({ nameImage: image });
+  }
+  drawTextImage() {
+    const { nameImage } = this.state;
+    if(!nameImage) return;
     const ctx = this.canvas.getContext('2d');
     const x = baseSize * 0.68;
     const y = baseSize * 0.48;
-    const w = image.width;
-    const h = image.height;
+    const w = nameImage.width;
+    const h = nameImage.height;
     ctx.translate(x, y);
     ctx.translate(w / 2, h / 2);
     ctx.rotate(18 * Math.PI / 180);
     ctx.translate(- w / 2, - h / 2);
-    drawTrapezoid(ctx, image, 50);
+    drawTrapezoid(ctx, nameImage, 50);
     ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
   download = () => {
@@ -189,6 +203,7 @@ class App extends Component {
     const { mode } = this.state;
     this.setState({ mode: ({ initial: 'editing', editing: 'initial' })[mode] });
   }
+  onClickInputLabel = () => this.fileInput.click()
   render() {
     const { width = 0, height = 0, name, mode, photo } = this.state;
     const isMobile = ['Android', 'iOS', 'Windows Phone'].includes(platform.os.family);
@@ -289,12 +304,12 @@ class App extends Component {
               {
                 !photo && (
                   <div className="image-selector d-flex align-items-center justify-content-center">
-                    <Button color="primary" outline size="sm">
+                    <Button color="primary" outline size="sm" onClick={this.onClickInputLabel}>
                       <label className="m-0 cursor-pointer">
-                        <Input type="file" className="d-none" onChange={this.onSelectFile} accept="image/*" />
                         画像選択
                       </label>
                     </Button>
+                    <input ref={_ => this.fileInput = _} type="file" className="d-none" onChange={this.onSelectFile} accept="image/*" />
                   </div>
                 )
               }

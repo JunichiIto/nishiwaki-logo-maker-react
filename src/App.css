@@ -134,3 +134,8 @@ label {
 .modal-help .modal-footer .btn {
   font-size: 0.8rem;
 }
+
+.react-resizable-handle {
+  bottom: -10px !important;
+  right: -10px !important;
+}
