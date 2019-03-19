@@ -217,7 +217,7 @@ class App extends Component {
             </NavbarBrand>
           </Navbar>
         </div>
-        <div style={{ width: 375, margin: 'auto' }}>
+        <div style={{ width: 375, margin: 'auto', padding: '0 10px' }}>
           <div className="text-center">
             <h3 className="description">西脇市のロゴを使って、あなただけのアイコン画像を作成します。</h3>
             <div className="movie-help">
