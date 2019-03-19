@@ -63,7 +63,7 @@ class App extends Component {
       this.drawCanvas();
     }
   }
-  // NOTE: files: [file] をするとIEで動かない。くそが
+  // NOTE: files: [file] をするとIEで動かない
   onSelectFile = async ({ target: { files = [] } }) => {
     const [file] = Array.from(files);
     if (!file) return;
