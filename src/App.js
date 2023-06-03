@@ -329,8 +329,8 @@ class App extends Component {
               お問合せ先：<a href="https://www.city.nishiwaki.lg.jp/form/inquiryPC/Init.do?inquiryId=2&amp;ref=www.city.nishiwaki.lg.jp%2Fkakukanogoannai%2Ftoshikeieibu%2Fjisedaisouseika%2Findex.html" target="_blank" rel="noopener noreferrer">西脇市役所次世代創生課</a>
             </div>
             <div className="source-code">
-              <a href="https://github.com/JunichiIto/nishiwaki-logo-maker" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-github" aria-hidden="true"></i>&nbsp;JunichiIto/nishiwaki-logo-maker
+              <a href="https://github.com/JunichiIto/nishiwaki-logo-maker-react" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-github" aria-hidden="true"></i>&nbsp;JunichiIto/nishiwaki-logo-maker-react
               </a>
             </div>
           </div>
